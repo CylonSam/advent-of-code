@@ -1,31 +1,23 @@
 package main
 
 import (
-	"encoding/csv"
 	"fmt"
-	"log"
-	"os"
 	"strings"
-)
 
-type ChallengePart int
-
-const (
-	Part1 ChallengePart = 1
-	Part2 ChallengePart = 2
+	"github.com/cylonsam/advent-of-code/2015/auxlib"
 )
 
 func main() {
 	filePath := "/home/samlas/workspace/advent-of-code/2015/05/input.csv"
-	csvRecords := readCsv(filePath)
+	csvRecords := auxlib.ReadCsv(filePath)
 	inputs := parseInputs(csvRecords)
-	fmt.Println(SolveDay5(inputs, Part2))
+	fmt.Println(SolveDay5(inputs, auxlib.Part2))
 }
 
-func SolveDay5(inputs []string, challengePart ChallengePart) int {
+func SolveDay5(inputs []string, challengePart auxlib.ChallengePart) int {
 	niceCount := 0
 
-	if challengePart == Part1 {
+	if challengePart == auxlib.Part1 {
 		for inputIndex := range len(inputs) {
 			if isNice1(inputs[inputIndex]) {
 				niceCount += 1
@@ -123,23 +115,6 @@ func isNice2(str string) bool {
 		}
 	}
 	return (true == pairRepeat) && (true == uniqueLetterBetween)
-}
-
-func readCsv(filePath string) [][]string {
-	f, err := os.Open(filePath)
-
-	if err != nil {
-		log.Fatal("Failed to read csv file", err)
-	}
-	defer f.Close()
-
-	csvReader := csv.NewReader(f)
-	records, err := csvReader.ReadAll()
-	if err != nil {
-		log.Fatal("Failed to read records from csv", err)
-	}
-
-	return records
 }
 
 func parseInputs(csvRecords [][]string) []string {
