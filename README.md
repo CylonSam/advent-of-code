@@ -13,4 +13,5 @@ Trying to get back the joy of programming by solving the challenges without AI.
 - [x] Day 3 (01/11/2026)
 - [x] Day 4 (01/11/2026)
 - [x] Day 5 (05/11/2026)
-- [ ] Day 6 (?)
+- [x] Day 6 (09/11/2026)
+- [ ] Day 7 (?)
